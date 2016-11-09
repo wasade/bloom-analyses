@@ -107,8 +107,10 @@ def _naive_mean_permutation_test(mat, cats, permutations=1000):
 
 def permutation_mean(table, grouping, permutations=1000, random_state=None):
     """ Conducts a fishers test on a contingency table.
+    
     This module will conduct a mean permutation test using
     numpy matrix algebra.
+    
     Parameters
     ----------
     table: pd.DataFrame
@@ -124,12 +126,18 @@ def permutation_mean(table, grouping, permutations=1000, random_state=None):
          Number of permutations to calculate
     random_state : int or RandomState, optional
         Pseudo number generator state used for random sampling.
+    
     Return
     ------
     pd.DataFrame
         A table of features, their t-statistics and p-values
         `"m"` is the t-statistic.
         `"pvalue"` is the p-value calculated from the permutation test.
+    
+    Notes
+    -----
+    Only works on binary classes.
+    
     Examples
     --------
     >>> from canvas.stats.permutation import fisher_mean
@@ -155,9 +163,7 @@ def permutation_mean(table, grouping, permutations=1000, random_state=None):
     b5   1.000000  1.000000
     b6   1.666667  1.000000
     b7   0.333333  1.000000
-    Notes
-    -----
-    Only works on binary classes.
+    
     """
 
     mat, cats = check_table_grouping(table, grouping)
